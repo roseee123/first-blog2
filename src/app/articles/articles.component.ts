@@ -9,8 +9,6 @@ import { ArticleService } from '../article.service';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
-  selectedArticle: Article;
-
   articles: Article[];
 
   constructor(
@@ -19,10 +17,6 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.getArticles();
-  }
-
-  onSelect(article: Article): void {
-    this.selectedArticle = article;
   }
 
   getArticles(): void {

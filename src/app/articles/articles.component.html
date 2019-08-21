@@ -1,9 +1,10 @@
 <h2>My Articles</h2>
 <ul class="articles">
-  <li *ngFor="let article of articles" (click)="onSelect(article)" [class.selected]="article === selectedArticle">
-    <span class="badge">{{article.id}}</span> {{article.title}}
+  <li *ngFor="let article of articles">
+    <a routerLink="/detail/{{article.id}}">
+      <span class="badge">{{article.id}}</span> {{article.title}}
+    </a>
   </li>
 </ul>
 
-<app-article-detail [article]="selectedArticle"></app-article-detail>
 
