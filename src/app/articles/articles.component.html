@@ -1,9 +1,27 @@
 <h2>My Articles</h2>
+<div>
+    <label>Article id:
+      <input #articleId />
+    </label>
+  <label>Article title:
+    <input #articleTitle />
+  </label>
+  <label>Article contents:
+    <input #articleContents />
+  </label>
+  <button (click)="add(articleId.value, articleTitle.value, articleContents.value); articleId.value=''; articleTitle.value=''; articleContents.value=''">
+    add
+  </button>
+</div>
+
 <ul class="articles">
   <li *ngFor="let article of articles">
     <a routerLink="/detail/{{article.id}}">
       <span class="badge">{{article.id}}</span> {{article.title}}
     </a>
+    <button class="delete" title="delete article"(click)="delete(article)">
+      x
+    </button>
   </li>
 </ul>
 

@@ -1,4 +1,4 @@
-<div *ngIf="article">
+<!-- <div *ngIf="article">
   <h2>{{article.title | uppercase }}</h2>
   <div><span>id: </span>{{article.id}}</div>
   <div>
@@ -13,3 +13,25 @@
   </div>
 </div>
 <button (click)="goBack()">go Back</button>
+<button (click)="save()">save</button> -->
+<!-- <div *ngFor="let i of article">
+  {{i.id}}-{{i.title}}-{{i.contents}}
+</div> -->
+<div *ngIf="article">
+  <div *ngFor="let i of article">
+      <h2>{{i.title | uppercase }}</h2>
+  <div><span>id: </span>{{i.id}}</div>
+  <div>
+    <label>title:
+      <input [(ngModel)]="i.title" placeholder="title"/>
+    </label>
+  </div>
+  <div>
+    <label>contents:
+      <input [(ngModel)]="i.contents" placeholder="contents"/>
+    </label>
+  </div>
+  </div>
+</div>
+<button (click)="goBack()">go Back</button>
+<button (click)="save()">save</button>
