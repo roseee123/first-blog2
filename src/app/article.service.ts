@@ -39,7 +39,6 @@ export class ArticleService {
     // this.messageService.add(`ArticleService: fetched article id=${id}`);
     // return of(ARTICLES.find(article => article.id === id));
     const url = `${this.articleUrl}/${id}`;
-    console.log(id);
     return this.http.get<Article>(url)
     .pipe(
       tap(_ => this.log('fetched article id= ${id}')),
@@ -58,17 +57,6 @@ export class ArticleService {
       catchError(this.handleError<Article>('updateArticle'))
     );
   }
-  // updateArticle(article: Article): Observable<any> {
-  //   // const id = typeof article === 'number' ? article : article.id;
-  //   const id = +article.id;
-  //   const url = `${this.articleUrl}/${id}`;
-  //   console.log(article);
-  //   return this.http.put(url, article, this.httpOptions)
-  //   .pipe(
-  //     tap(_ => this.log('updated article id= ${id}')),
-  //     catchError(this.handleError<Article>('updateArticle'))
-  //   );
-  // }
 
   addArticle(article: Article): Observable<Article> {
     const id =  +article.id;

@@ -19,19 +19,20 @@
 </div> -->
 <div *ngIf="article">
   <div *ngFor="let i of article">
-      <h2>{{i.title | uppercase }}</h2>
-  <div><span>id: </span>{{i.id}}</div>
-  <div>
-    <label>title:
-      <input [(ngModel)]="i.title" placeholder="title"/>
-    </label>
-  </div>
-  <div>
-    <label>contents:
-      <input [(ngModel)]="i.contents" placeholder="contents"/>
-    </label>
-  </div>
+    <h2>{{i.title | uppercase }}</h2>
+    <div>
+      <span>id: </span>{{i.id}}</div>
+    <div>
+      <label>title:
+        <input [(ngModel)]="i.title" placeholder="title"/>
+      </label>
+    </div>
+    <div>
+      <label>contents:
+        <input [(ngModel)]="i.contents" placeholder="contents"/>
+      </label>
+    </div>
+    <button (click)="goBack()">go Back</button>
+    <button (click)="save(i.title, i.contents)">save</button>
   </div>
 </div>
-<button (click)="goBack()">go Back</button>
-<button (click)="save()">save</button>
