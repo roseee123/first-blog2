@@ -13,8 +13,8 @@ export class ArticleService {
   private articleUrl = 'http://localhost:3000';
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-   })
+      // 'Content-Type': 'application/json'
+   }).set('token', localStorage.getItem('token'))
   };
   articles: Article[];
 
@@ -50,6 +50,7 @@ export class ArticleService {
     // const id = +article.id;
     const url = `${this.articleUrl}/${id}`;
     console.log(article);
+    this.httpOptions.headers.append('token', localStorage.getItem('token'));
     return this.http.put<Article>(url, article, this.httpOptions)
     .pipe(
       tap(_ => this.log('updated article id= ${id}')),
