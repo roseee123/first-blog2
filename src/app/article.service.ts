@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-
+import { UtilsService } from './services/utils.service';
 import { Article } from './article';
 // import { ARTICLES } from './mock-articles';
 import { MessageService } from './message.service';
@@ -10,19 +10,18 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class ArticleService {
-  private articleUrl = 'http://localhost:3000/articles';
+  private articleUrl = 'http://localhost:3000';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+   })
   };
   articles: Article[];
 
-  // genId(articles: Article[]): number {
-  //   return articles.length > 0 ? Math.max(...articles.map(hero => hero.id)) + 1 : 11;
-  // }
-
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private utils: UtilsService
   ) { }
 
   getArticles(): Observable<Article[]> {

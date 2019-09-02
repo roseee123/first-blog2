@@ -1,0 +1,7 @@
+<nav [style.background] = "(login$ | async) ? 'yellow' : 'red'">
+  <a routerLink='/dashboard'>Dashboard </a>
+  <a routerLink='/articles'>Articles </a>
+  <a *ngIf="!(login$ | async)" routerLink='/login'>Login </a>
+  <!-- <a *ngIf="login$ | async" routerLink='/'>user center </a> -->
+  <a *ngIf="login$ | async" (click)="logout()">logout </a>
+</nav>
