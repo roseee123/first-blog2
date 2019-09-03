@@ -10,6 +10,8 @@ import { ArticleService } from '../article.service';
 })
 export class ArticlesComponent implements OnInit {
   articles: Article[];
+  count = 10;
+  p = 1;
 
   constructor(
     private articleService: ArticleService

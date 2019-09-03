@@ -15,7 +15,7 @@
 </div>
 
 <ul class="articles">
-  <li *ngFor="let article of articles">
+  <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p }">
     <a routerLink="/detail/{{article.id}}">
       <span class="badge">{{article.id}}</span> {{article.title}}
     </a>
@@ -24,5 +24,5 @@
     </button>
   </li>
 </ul>
-
+<pagination-controls (pageChange)="p=$event"></pagination-controls>
 

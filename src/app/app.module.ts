@@ -3,6 +3,7 @@ import { NgModule, APP_INITIALIZER, Injector } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +42,8 @@ import { UtilsService } from './services/utils.service';
       }
     }),
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxPaginationModule
   ],
   providers: [
     UtilsService
