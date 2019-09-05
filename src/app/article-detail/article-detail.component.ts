@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Article } from '../article';
-import { ArticleService } from '../article.service';
+import { ArticleService } from '../services/article.service';
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',

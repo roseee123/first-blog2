@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from './user';
-import { Response } from './response';
-import { UtilsService } from './services/utils.service';
+import { User } from '../user';
+import { Response } from '../response';
+import { UtilsService } from './utils.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +19,8 @@ export class UserService {
   ) { }
 
   loginServer(loginData): Observable<Response> {
-    let userid = loginData.userid.trim();
-    let password = loginData.password.trim();
+    const userid = loginData.userid.trim();
+    const password = loginData.password.trim();
     const url = `${this.articleUrl}/auth/login`;
     return this.http.post<Response>(url, { userid, password});
   }

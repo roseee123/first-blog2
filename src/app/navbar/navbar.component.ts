@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
 import { User } from '../user';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
