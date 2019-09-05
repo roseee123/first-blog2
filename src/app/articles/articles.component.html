@@ -1,21 +1,38 @@
-<h2>My Articles</h2>
+<!-- <h2>My Articles</h2>
 <div>
-    <label>Article id:
-      <input #articleId />
-    </label>
+  <label>Article id:
+    <input #articleId />
+  </label>
+  <br>
   <label>Article title:
     <input #articleTitle />
   </label>
+  <br>
   <label>Article contents:
     <input #articleContents />
   </label>
+  <br>
   <button (click)="add(articleId.value, articleTitle.value, articleContents.value); articleId.value=''; articleTitle.value=''; articleContents.value=''">
+    add
+  </button>
+</div> -->
+<h2>My Articles</h2>
+<div>
+  <label>Article title:
+    <input #articleTitle />
+  </label>
+  <br>
+  <label>Article contents:
+    <input #articleContents />
+  </label>
+  <br>
+  <button (click)="add(articleTitle.value, articleContents.value);articleTitle.value=''; articleContents.value=''">
     add
   </button>
 </div>
 
 <ul class="articles">
-  <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p }">
+  <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize }">
     <a routerLink="/detail/{{article.id}}">
       <span class="badge">{{article.id}}</span> {{article.title}}
     </a>
@@ -24,5 +41,6 @@
     </button>
   </li>
 </ul>
+
 <pagination-controls (pageChange)="p=$event"></pagination-controls>
 

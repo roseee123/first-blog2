@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { UtilsService } from './services/utils.service';
-import { Article } from './article';
+import { UtilsService } from './utils.service';
+import { Article } from '../article';
 // import { ARTICLES } from './mock-articles';
 import { MessageService } from './message.service';
 @Injectable({
@@ -12,9 +12,7 @@ import { MessageService } from './message.service';
 export class ArticleService {
   private articleUrl = 'http://localhost:3000';
   httpOptions = {
-    headers: new HttpHeaders({
-      // 'Content-Type': 'application/json'
-   }).set('token', localStorage.getItem('token'))
+    headers: new HttpHeaders().set('token', localStorage.getItem('token'))
   };
   articles: Article[];
 
