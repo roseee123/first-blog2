@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
@@ -11,8 +11,8 @@ import { ArticleService } from '../services/article.service';
 export class ArticlesComponent implements OnInit {
   articles: Article[];
   count = 10;
-  p = 1;
-  totalDate: number;
+  p:number = 1;
+  totalData: number;
   maxSize = 10;
 
   constructor(
@@ -21,14 +21,24 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.getArticles();
+    this.getArticleCount();
+  }
+
+  getArticleCount(): void {
+    this.articleService.getArticleCount()
+    .subscribe(Response => {
+      console.log(Response[0].total);
+      this.totalData = Response[0].total;
+    });
   }
 
   getArticles(): void {
     this.articleService.getArticles()
     .subscribe(articles => {
       this.articles = articles;
-    this.totalDate = this.articles.length;
-  console.log(this.totalDate);});
+  //   this.totalDate = this.articles.length;
+  // console.log(this.totalDate);
+});
   }
 
   // add(id: number, title: string, contents: string): void {

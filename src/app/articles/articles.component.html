@@ -32,7 +32,7 @@
 </div>
 
 <ul class="articles">
-  <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize }">
+  <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize, totalItems: totalData }">
     <a routerLink="/detail/{{article.id}}">
       <span class="badge">{{article.id}}</span> {{article.title}}
     </a>

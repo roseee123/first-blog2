@@ -16,11 +16,21 @@ export class ArticleService {
   };
   articles: Article[];
 
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
     private utils: UtilsService
   ) { }
+
+  getArticleCount(): Observable<any> {
+    const url = `${this.articleUrl}/total`;
+    return this.http.get<any>(url)
+    .pipe(
+      tap(_ => this.log('fetched articles count')),
+      catchError(this.handleError<any>('getTotal'))
+    );
+  }
 
   getArticles(): Observable<Article[]> {
     // this.messageService.add(`articleService: fetch articles`);
