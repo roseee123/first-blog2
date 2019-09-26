@@ -41,23 +41,14 @@ export class ArticlesComponent implements OnInit {
 });
   }
 
-  // add(id: number, title: string, contents: string): void {
+  // add(title: string, contents: string): void {
   //   const paper1 = new Article();
-  //   paper1.id = id;
   //   paper1.title = title.trim();
   //   paper1.contents = contents.trim();
-  //   if (!id || !title || !contents) { return; }
+  //   if (!title || !contents) { return; }
   //   this.articleService.addArticle(paper1).subscribe(
   //     article => this.articles.push(article));
   // }
-  add(title: string, contents: string): void {
-    const paper1 = new Article();
-    paper1.title = title.trim();
-    paper1.contents = contents.trim();
-    if (!title || !contents) { return; }
-    this.articleService.addArticle(paper1).subscribe(
-      article => this.articles.push(article));
-  }
 
   delete(article: Article): void {
     this.articles = this.articles.filter(h => h !== article);

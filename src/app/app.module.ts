@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
 import { UtilsService } from './services/utils.service';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UtilsService } from './services/utils.service';
     MessagesComponent,
     DashboardComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
