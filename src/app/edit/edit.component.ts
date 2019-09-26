@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
 @Component({
@@ -11,7 +11,8 @@ export class EditComponent implements OnInit {
   articles: Article[];
 
   constructor(
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class EditComponent implements OnInit {
     if (!title || !contents) { return; }
     this.articleService.addArticle(paper1).subscribe(
       article => this.articles.push(article));
+    this.location.back();
   }
 
 }

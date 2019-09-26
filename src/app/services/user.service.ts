@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../user';
 import { Response } from '../response';
@@ -73,5 +73,12 @@ export class UserService {
         return of(false);
     }
   }
+
+  // getUserFromServer(): Observable<any> {
+  //   if (!this.utils.isTokenExpired()) {
+  //     const token = this.utils.getToken();
+  //     return this.http.post(this.articleUrl + '/home', { 'token' : token});
+  //   }
+  // }
 
 }

@@ -16,7 +16,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
 import { UtilsService } from './services/utils.service';
+import { StartupService } from './services/startup.service';
 import { EditComponent } from './edit/edit.component';
+
+export function startupServiceFactory(startupService: StartupService): Function { return () => startupService.load(); }
 
 @NgModule({
   declarations: [
@@ -48,7 +51,14 @@ import { EditComponent } from './edit/edit.component';
     NgxPaginationModule
   ],
   providers: [
-    UtilsService
+    UtilsService,
+    StartupService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: startupServiceFactory,
+      deps: [StartupService, Injector],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   exports: [
