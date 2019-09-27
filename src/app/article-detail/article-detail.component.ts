@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -11,15 +12,18 @@ import { ArticleService } from '../services/article.service';
 })
 export class ArticleDetailComponent implements OnInit {
   @Input() article: Article;
+  login$: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
+    private userService: UserService,
     private location: Location,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.login$ = this.userService.getLoginStatus();
     this.getArticle();
   }
 

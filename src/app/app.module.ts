@@ -14,10 +14,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule } from '@angular/material';
 import { UtilsService } from './services/utils.service';
 import { StartupService } from './services/startup.service';
 import { EditComponent } from './edit/edit.component';
+import { ShareModule } from './share/share.module';
 
 export function startupServiceFactory(startupService: StartupService): Function { return () => startupService.load(); }
 
@@ -47,8 +47,8 @@ export function startupServiceFactory(startupService: StartupService): Function 
       }
     }),
     BrowserAnimationsModule,
-    MatSnackBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ShareModule
   ],
   providers: [
     UtilsService,
@@ -62,7 +62,6 @@ export function startupServiceFactory(startupService: StartupService): Function 
   ],
   bootstrap: [AppComponent],
   exports: [
-    MatSnackBarModule,
   ReactiveFormsModule
 ]
 })

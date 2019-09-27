@@ -1,22 +1,4 @@
-<!-- <h2>My Articles</h2>
-<div>
-  <label>Article id:
-    <input #articleId />
-  </label>
-  <br>
-  <label>Article title:
-    <input #articleTitle />
-  </label>
-  <br>
-  <label>Article contents:
-    <input #articleContents />
-  </label>
-  <br>
-  <button (click)="add(articleId.value, articleTitle.value, articleContents.value); articleId.value=''; articleTitle.value=''; articleContents.value=''">
-    add
-  </button>
-</div> -->
-<h2>My Articles</h2>
+<!-- <h2>My Articles</h2> -->
 <!-- <div>
   <label>Article title:
     <input #articleTitle />
@@ -31,7 +13,7 @@
   </button>
 </div> -->
 
-<ul class="articles">
+<!-- <ul class="articles">
   <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize, totalItems: totalData }">
     <a routerLink="/detail/{{article.id}}">
       <span class="badge">{{article.id}}</span> {{article.title}}
@@ -42,5 +24,17 @@
   </li>
 </ul>
 
-<pagination-controls (pageChange)="p=$event"></pagination-controls>
+<pagination-controls (pageChange)="p=$event"></pagination-controls> -->
 
+<mat-list class="articles" *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize, totalItems: totalData }">
+  <mat-list-item>
+    <a routerLink="/detail/{{article.id}}">
+      <span class="badge">{{article.id}}</span> {{article.title}}
+    </a>
+    <a mat-button class="delete" title="delete article"(click)="delete(article)">
+      x
+    </a>
+  </mat-list-item>
+</mat-list>
+
+<pagination-controls (pageChange)="p=$event"></pagination-controls>

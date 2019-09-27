@@ -37,13 +37,14 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.form.value)
     .subscribe(
       res => {
-      // if (res) {
-      //   this.snackbar.open('登入成功', 'OK', { duration: 3000});
-      // } else {
-      //   this.snackbar.open('請檢查輸入', 'OK', {duration: 3000});
-      // }
+      if (res) {
+        // this.snackbar.open('登入成功', 'OK', { duration: 3000});
+        this.router.navigate(['/']);
+      } else {
+        this.snackbar.open('請檢查輸入', 'OK');
+      }
       // this.location.back();
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
     });
   }
 

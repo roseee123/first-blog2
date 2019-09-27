@@ -10,6 +10,7 @@ import { ArticleService } from '../services/article.service';
 })
 export class DashboardComponent implements OnInit {
   articles: Article[];
+  peopleCount: number;
 
   constructor(
     private articleService: ArticleService
@@ -17,10 +18,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getArticles();
+    this.randomCount();
   }
 
   getArticles(): void {
     this.articleService.getArticles()
     .subscribe(articles => this.articles = articles.slice(0, 4));
+  }
+
+  randomCount(): void {
+    this.peopleCount = Math.floor(Math.random() * 1000);
   }
 }

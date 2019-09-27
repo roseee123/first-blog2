@@ -1,8 +1,14 @@
-<nav [style.background] = "(login$ | async) ? 'yellow' : 'red'">
+<!-- <nav [style.background] = "(login$ | async) ? 'yellow' : 'red'">
   <a routerLink='/dashboard'>Dashboard </a>
   <a routerLink='/articles'>Articles </a>
   <a *ngIf="login$ | async" routerLink='/edit'>Edit </a>
   <a *ngIf="!(login$ | async)" routerLink='/login'>Login </a>
-  <!-- <a *ngIf="login$ | async" routerLink='/'>user center </a> -->
   <a *ngIf="login$ | async" (click)="logout()">logout </a>
-</nav>
+</nav> -->
+<mat-toolbar [style.background] = "(login$ | async) ? '#afd8e3' : '#b8e6e1'">
+  <a mat-button routerLink='/dashboard'>Dashboard </a>
+  <a mat-button routerLink='/articles'>Articles </a>
+  <a mat-button *ngIf="login$ | async" routerLink='/edit'>New</a>
+  <a mat-button *ngIf="!(login$ | async)" routerLink='/login'>Login </a>
+  <a mat-button *ngIf="login$ | async" (click)="logout()">logout </a>
+</mat-toolbar>

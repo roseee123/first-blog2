@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <label>Article title:
     <input #articleTitle />
   </label>
@@ -10,4 +10,22 @@
   <button (click)="add(articleTitle.value, articleContents.value);articleTitle.value=''; articleContents.value=''">
     add
   </button>
-</div>
+</div> -->
+
+<form>
+  <mat-form-field>
+    <label>Article title:
+      <input matInput #articleTitle />
+    </label>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <label>Article contents:
+      <input matInput #articleContents />
+    </label>
+  </mat-form-field>
+  <br>
+  <button mat-button (click)="add(articleTitle.value, articleContents.value);articleTitle.value=''; articleContents.value=''">
+    add
+  </button>
+</form>
