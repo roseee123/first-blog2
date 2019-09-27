@@ -23,14 +23,14 @@ export class ArticleService {
     private utils: UtilsService
   ) { }
 
-  getArticleCount(): Observable<any> {
-    const url = `${this.articleUrl}/total`;
-    return this.http.get<any>(url)
-    .pipe(
-      tap(_ => this.log('fetched articles count')),
-      catchError(this.handleError<any>('getTotal'))
-    );
-  }
+  // getArticleCount(): Observable<any> {
+  //   const url = `${this.articleUrl}/total`;
+  //   return this.http.get<any>(url)
+  //   .pipe(
+  //     tap(_ => this.log('fetched articles count')),
+  //     catchError(this.handleError<any>('getTotal'))
+  //   );
+  // }
 
   getArticles(): Observable<Article[]> {
     // this.messageService.add(`articleService: fetch articles`);

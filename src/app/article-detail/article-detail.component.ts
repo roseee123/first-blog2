@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { Router } from '@angular/router';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
 @Component({
@@ -15,7 +15,8 @@ export class ArticleDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,7 +56,10 @@ export class ArticleDetailComponent implements OnInit {
     console.log('contents: ' + paper1.contents);
     if (!id || !title || !contents) { return; }
     this.articleService.updateArticle(id, paper1)
-    .subscribe(() => this.goBack());
+    .subscribe(
+      // () => this.goBack()
+      () => this.router.navigate(['/articles'])
+    );
   }
 
 }

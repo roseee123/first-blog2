@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { MatSnackBar } from '@angular/material';
-
+// import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    // private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,12 +35,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.form.value)
-    .subscribe(res => {
-      if (res) {
-        this.snackbar.open('登入成功', 'OK', { duration: 3000});
-      } else {
-        this.snackbar.open('請檢查輸入', 'OK', {duration: 3000});
-      }
+    .subscribe(
+      res => {
+      // if (res) {
+      //   this.snackbar.open('登入成功', 'OK', { duration: 3000});
+      // } else {
+      //   this.snackbar.open('請檢查輸入', 'OK', {duration: 3000});
+      // }
+      // this.location.back();
+      this.router.navigate(['/']);
     });
   }
 

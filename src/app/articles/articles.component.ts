@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-
+// import { Location } from '@angular/common';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -11,26 +11,28 @@ import { ArticleService } from '../services/article.service';
 export class ArticlesComponent implements OnInit {
   articles: Article[];
   count = 10;
-  p:number = 1;
+  p: number;
   totalData: number;
   maxSize = 10;
 
   constructor(
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    // private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getArticles();
-    this.getArticleCount();
+    // this.getArticleCount();
   }
 
-  getArticleCount(): void {
-    this.articleService.getArticleCount()
-    .subscribe(Response => {
-      console.log(Response[0].total);
-      this.totalData = Response[0].total;
-    });
-  }
+  // getArticleCount(): void {
+  //   this.articleService.getArticleCount()
+  //   .subscribe(Response => {
+  //     console.log(Response[0].total);
+  //     this.totalData = Response[0].total;
+  //   });
+  // }
 
   getArticles(): void {
     this.articleService.getArticles()
@@ -54,6 +56,8 @@ export class ArticlesComponent implements OnInit {
     this.articles = this.articles.filter(h => h !== article);
     this.articleService.deleteArticle(article).subscribe();
     console.log(article.id);
+    // this.location.back();
+    this.router.navigate(['/articles']);
   }
 
 }

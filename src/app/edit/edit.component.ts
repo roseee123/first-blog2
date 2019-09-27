@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -12,7 +12,7 @@ export class EditComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private location: Location
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class EditComponent implements OnInit {
     if (!title || !contents) { return; }
     this.articleService.addArticle(paper1).subscribe(
       article => this.articles.push(article));
-    this.location.back();
+    this.router.navigate(['/articles']);
   }
 
 }
