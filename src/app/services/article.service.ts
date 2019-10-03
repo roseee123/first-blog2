@@ -32,6 +32,15 @@ export class ArticleService {
   //   );
   // }
 
+  getArticlesTotal(): Observable<Article[]> {
+    const url = `${this.articleUrl}/total`;
+    return this.http.get<Article[]>(url)
+    .pipe(
+      tap(_ => this.log('fetched articles')),
+      catchError(this.handleError<Article[]>('getArticles', []))
+    );
+  }
+
   getArticles(): Observable<Article[]> {
     // this.messageService.add(`articleService: fetch articles`);
     // return of(ARTICLES);

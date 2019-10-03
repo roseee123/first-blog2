@@ -1,4 +1,4 @@
-/* DashboardComponent's private CSS styles */
+/* DashboardComponent's private CSS styles
 [class*='col-'] {
   float: left;
   padding-right: 20px;
@@ -48,16 +48,73 @@ h4 {
 .grid-pad > [class*='col-']:last-of-type {
   padding-right: 20px;
 }
-@media (max-width: 600px) {
-  .module {
-    font-size: 10px;
-    max-height: 75px; }
+ */
+ /* .module {
+  padding: 20px;
+  text-align: center;
+  color: #eee;
+  max-height: 120px;
+  min-width: 120px;
+  background-color: #afd8e3;
+  border-radius: 2px;
 }
-@media (max-width: 1024px) {
-  .grid {
-    margin: 0;
-  }
-  .module {
-    min-width: 60px;
-  }
+.module:hover {
+  background-color: #eee;
+  cursor: pointer;
+  color: #607d8b;
+} */
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+  color: white;
+}
+
+.mat-card {
+  width: 95%;
+  height: 95%;
+  background-color: #a2c2de;
+  margin: 1em;
+  text-align: center;
+}
+.list {
+  border: dashed;
+  border-color: #d9d9d9;
+}
+.div-width {
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  background-color: white;
+}
+.deep-blue {
+  background-color: #00146e;
+}
+::ng-deep .carousel-1 .carousel-control-prev {
+  display:none;
+}
+::ng-deep .carousel-1 .carousel-control-next {
+  display:none;
+}
+::ng-deep .carousel-2 .carousel-indicators {
+  display:none;
+}
+::ng-deep .carousel-2 .carousel-control-prev {
+  width: 5%;
+}
+::ng-deep .carousel-2 .carousel-control-prev-icon {
+  background-color: #00146e;
+  width: 50px;
+  height: 50px;
+  background-size: 41%;
+  border-radius: 50%;
+}
+::ng-deep .carousel-2 .carousel-control-next {
+  width: 5%;
+}
+::ng-deep .carousel-2 .carousel-control-next-icon {
+  background-color: #00146e;
+  width: 50px;
+  height: 50px;
+  background-size: 41%;
+  border-radius: 50%;
 }

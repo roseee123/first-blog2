@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CarouselModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +49,7 @@ export function startupServiceFactory(startupService: StartupService): Function 
     }),
     BrowserAnimationsModule,
     NgxPaginationModule,
+    CarouselModule.forRoot(),
     ShareModule
   ],
   providers: [

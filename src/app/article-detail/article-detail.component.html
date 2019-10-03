@@ -28,6 +28,7 @@
       <section>
         <div class="title">{{i.title}}</div>
         <p>{{i.contents}}</p>
+        <div>{{i.createAt | date}}</div>
       </section>
       <button mat-button (click)="goBack()">go Back</button>
     </div>
@@ -43,16 +44,19 @@
       </section>
       <section>
         <mat-form-field>
-          <label>title:
-            <input matInput [(ngModel)]="i.title"  name="i.title" placeholder="title" />
-          </label>
+          <label>title:</label>
+          <input matInput [(ngModel)]="i.title"  name="i.title" />
         </mat-form-field>
         <br>
+        <br>
         <mat-form-field>
-          <label>contents:
-            <input matInput [(ngModel)]="i.contents" name="i.contents" placeholder="contents" />
-          </label>
+          <label>contents:</label>
+            <textarea matInput [(ngModel)]="i.contents" name="i.contents" style="height:150px;"></textarea>
         </mat-form-field>
+        <div class="mat-form-field">
+          <label>create_at:</label>
+          <div>{{i.createAt | date}}</div>
+        </div>
       </section>
       <br>
       <button mat-button (click)="goBack()">go Back</button>&nbsp;
