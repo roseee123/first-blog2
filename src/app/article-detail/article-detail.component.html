@@ -23,7 +23,7 @@
     <div class="container" *ngFor="let i of article">
       <div class="title">{{i.id}}</div>
       <section>
-        <img src="../../assets/img/img.PNG" width="100%" height="100%">
+        <img src="{{i.imgUrl}}" width="100%" height="100%">
       </section>
       <section>
         <div class="title">{{i.title}}</div>
@@ -40,7 +40,7 @@
     <div class="container" *ngFor="let i of article">
         <div class="title">{{i.id}}</div>
       <section>
-        <img src="../../assets/img/img.PNG" width="100%" height="100%">
+        <img src="{{i.imgUrl}}" width="100%" height="100%">
       </section>
       <section>
         <mat-form-field>
@@ -51,7 +51,7 @@
         <br>
         <mat-form-field>
           <label>contents:</label>
-            <textarea matInput [(ngModel)]="i.contents" name="i.contents" style="height:150px;"></textarea>
+            <textarea matInput [(ngModel)]="i.contents" name="i.contents" style="height:200px;"></textarea>
         </mat-form-field>
         <div class="mat-form-field">
           <label>create_at:</label>

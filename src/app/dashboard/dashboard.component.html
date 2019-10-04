@@ -19,7 +19,7 @@
     <carousel class="carousel-1">
       <slide *ngFor="let article of articles.slice(0, 7)">
         <mat-card class="mat-card" routerLink="/detail/{{article.id}}">
-          <img src="../../assets/img/img.PNG" width="100%" height="100%">
+          <img src="{{article.imgUrl}}" width="100%" height="100%">
           <div class="carousel-caption">{{article.title}}</div>
         </mat-card>
       </slide>
@@ -45,7 +45,7 @@
     <mat-card *ngFor="let article of articles.slice(randomNum, randomNum+4)" class="mat-card" routerLink="/detail/{{article.id}}">
       <mat-card-header>
         {{article.title}}
-        <img mat-card-avatar src="../../assets/img/img.PNG" width="90%" height="90%">
+        <img mat-card-avatar src="{{article.imgUrl}}" width="90%" height="90%">
       </mat-card-header>
       <mat-card-content class="set-left">{{article.contents.slice(0,80)+ '...'}}</mat-card-content>
       <mat-card-footer class="set-left">{{article.createAt | date}}</mat-card-footer>
@@ -56,7 +56,7 @@
     <carousel class="carousel-2" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset">
       <slide *ngFor="let article of articles">
         <mat-card class="mat-card" routerLink="/detail/{{article.id}}">
-          <img src="../../assets/img/img.PNG" width="90%" height="90%">
+          <img src="{{article.imgUrl}}" width="90%" height="90%">
           <div class="carousel-caption">{{article.title}}</div>
         </mat-card>
       </slide>
@@ -68,7 +68,7 @@
       <mat-list class="list" *ngFor="let article2 of articles.slice(randomNum, randomNum+5)">
         <mat-list-item>
           <a routerLink="/detail/{{article2.id}}">
-            <img src="../../assets/img/img.PNG" width="10%" height="10%">
+            <img src="{{article2.imgUrl}}" width="10%" height="10%">
             <span class="badge">{{article2.id}}-></span>{{article2.title}}
           </a>
         </mat-list-item>

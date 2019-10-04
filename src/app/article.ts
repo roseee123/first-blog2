@@ -4,4 +4,5 @@ export class Article {
    contents: string;
    createAt: Date;
    updateAt: Date;
+   imgUrl: string;
 }
