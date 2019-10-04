@@ -47,8 +47,8 @@
         {{article.title}}
         <img mat-card-avatar src="../../assets/img/img.PNG" width="90%" height="90%">
       </mat-card-header>
-      <mat-card-content>{{article.contents.slice(0,80)+ '...'}}</mat-card-content>
-      <mat-card-footer>{{article.createAt | date}}</mat-card-footer>
+      <mat-card-content class="set-left">{{article.contents.slice(0,80)+ '...'}}</mat-card-content>
+      <mat-card-footer class="set-left">{{article.createAt | date}}</mat-card-footer>
     </mat-card>
   </mat-grid-tile>
 
