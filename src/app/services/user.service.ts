@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, BehaviorSubject, pipe } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../user';
 import { Response } from '../response';
 import { UtilsService } from './utils.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +23,7 @@ export class UserService {
     const userid = loginData.userid.trim();
     const password = loginData.password.trim();
     const url = `${this.articleUrl}/auth/login`;
-    return this.http.post<Response>(url, { userid, password});
+    return this.http.post<Response>(url, { userid, password });
   }
 
   login(loginData): Observable<boolean> {
@@ -38,14 +39,14 @@ export class UserService {
           return false;
         }
       },
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log('client-side error');
-        } else {
-          console.log('server-side error');
-        }
-        return of(false);
-      })
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log('client-side error');
+          } else {
+            console.log('server-side error');
+          }
+          return of(false);
+        })
     );
   }
 
@@ -65,20 +66,12 @@ export class UserService {
 
   checkUser(): Observable<boolean> {
     if (!this.utils.isTokenExpired()) {
-        this.loginStatus.next(true);
-        return of(true);
+      this.loginStatus.next(true);
+      return of(true);
     } else {
-        console.log('no token or token is expired');
-        this.utils.removeToken();
-        return of(false);
+      console.log('no token or token is expired');
+      this.utils.removeToken();
+      return of(false);
     }
   }
-
-  // getUserFromServer(): Observable<any> {
-  //   if (!this.utils.isTokenExpired()) {
-  //     const token = this.utils.getToken();
-  //     return this.http.post(this.articleUrl + '/home', { 'token' : token});
-  //   }
-  // }
-
 }

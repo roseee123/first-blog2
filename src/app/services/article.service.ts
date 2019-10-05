@@ -16,39 +16,29 @@ export class ArticleService {
   };
   articles: Article[];
 
-
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
     private utils: UtilsService
   ) { }
 
-  // getArticleCount(): Observable<any> {
-  //   const url = `${this.articleUrl}/total`;
-  //   return this.http.get<any>(url)
-  //   .pipe(
-  //     tap(_ => this.log('fetched articles count')),
-  //     catchError(this.handleError<any>('getTotal'))
-  //   );
-  // }
-
   getArticlesTotal(): Observable<Article[]> {
     const url = `${this.articleUrl}/total`;
     return this.http.get<Article[]>(url)
-    .pipe(
-      tap(_ => this.log('fetched articles')),
-      catchError(this.handleError<Article[]>('getArticles', []))
-    );
+      .pipe(
+        tap(_ => this.log('fetched articles')),
+        catchError(this.handleError<Article[]>('getArticles', []))
+      );
   }
 
   getArticles(): Observable<Article[]> {
     // this.messageService.add(`articleService: fetch articles`);
     // return of(ARTICLES);
     return this.http.get<Article[]>(this.articleUrl)
-    .pipe(
-      tap(_ => this.log('fetched articles')),
-      catchError(this.handleError<Article[]>('getArticles', []))
-    );
+      .pipe(
+        tap(_ => this.log('fetched articles')),
+        catchError(this.handleError<Article[]>('getArticles', []))
+      );
   }
 
   getArticle(id: number): Observable<Article> {
@@ -56,10 +46,10 @@ export class ArticleService {
     // return of(ARTICLES.find(article => article.id === id));
     const url = `${this.articleUrl}/${id}`;
     return this.http.get<Article>(url)
-    .pipe(
-      tap(_ => this.log('fetched article id= ${id}')),
-      catchError(this.handleError<Article>('getArticle id= ${id}'))
-    );
+      .pipe(
+        tap(_ => this.log('fetched article id= ${id}')),
+        catchError(this.handleError<Article>('getArticle id= ${id}'))
+      );
   }
 
   updateArticle(id: number, article: Article): Observable<Article> {
@@ -69,30 +59,30 @@ export class ArticleService {
     console.log(article);
     this.httpOptions.headers.append('token', localStorage.getItem('token'));
     return this.http.put<Article>(url, article, this.httpOptions)
-    .pipe(
-      tap(_ => this.log('updated article id= ${id}')),
-      catchError(this.handleError<Article>('updateArticle'))
-    );
+      .pipe(
+        tap(_ => this.log('updated article id= ${id}')),
+        catchError(this.handleError<Article>('updateArticle'))
+      );
   }
 
   addArticle(article: Article): Observable<Article> {
-    const id =  +article.id;
+    const id = +article.id;
     console.log(id);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions)
-    .pipe(
-      tap(_ => this.log('add article id= ${id}')),
-      catchError(this.handleError<Article>('addArticle'))
-    );
+      .pipe(
+        tap(_ => this.log('add article id= ${id}')),
+        catchError(this.handleError<Article>('addArticle'))
+      );
   }
 
   deleteArticle(article: Article | number): Observable<Article> {
     const id = typeof article === 'number' ? article : article.id;
     const url = `${this.articleUrl}/${id}`;
     return this.http.delete<Article>(url, this.httpOptions)
-    .pipe(
-      tap(_ => this.log('delete article id=${id}')),
-      catchError(this.handleError<Article>('deleteArticle'))
-    );
+      .pipe(
+        tap(_ => this.log('delete article id=${id}')),
+        catchError(this.handleError<Article>('deleteArticle'))
+      );
   }
 
   private log(message: string) {
@@ -108,14 +98,14 @@ export class ArticleService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-    // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
 
-    // TODO: better job of transforming error for user consumption
-    this.log(`${operation} failed: ${error.message}`);
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
 
-    // Let the app keep running by returning an empty result.
-    return of(result as T);
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
     };
   }
 }

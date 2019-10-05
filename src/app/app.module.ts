@@ -20,7 +20,7 @@ import { StartupService } from './services/startup.service';
 import { EditComponent } from './edit/edit.component';
 import { ShareModule } from './share/share.module';
 
-export function startupServiceFactory(startupService: StartupService): Function { return () => startupService.load(); }
+export function startupServiceFactory(startupService: StartupService): () => void { return () => startupService.load(); }
 
 @NgModule({
   declarations: [

@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
 import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -19,7 +20,7 @@ export class ArticleDetailComponent implements OnInit {
     private articleService: ArticleService,
     private userService: UserService,
     private location: Location,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -30,26 +31,17 @@ export class ArticleDetailComponent implements OnInit {
   getArticle(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.articleService.getArticle(id)
-    // .subscribe( article => this.article = article);
-    .subscribe((response: any) => {
-      this.article = response;
-      console.log(this.article);
-    });
+      // .subscribe( article => this.article = article);
+      .subscribe((response: any) => {
+        this.article = response;
+        console.log(this.article);
+      });
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  // save(): void {
-  //   this.articleService.updateArticle(this.article)
-  //   .subscribe(() => this.goBack);
-  // }
-  // save(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.articleService.updateArticle(id, this.article)
-  //   .subscribe();
-  // }
   save(title: string, contents: string): void {
     const id = +this.route.snapshot.paramMap.get('id');
     const paper1 = new Article();
@@ -60,10 +52,9 @@ export class ArticleDetailComponent implements OnInit {
     console.log('contents: ' + paper1.contents);
     if (!id || !title || !contents) { return; }
     this.articleService.updateArticle(id, paper1)
-    .subscribe(
-      // () => this.goBack()
-      () => this.router.navigate(['/articles'])
-    );
+      .subscribe(
+        () => this.router.navigate(['/articles'])
+      );
   }
 
 }

@@ -10,11 +10,14 @@ h3 {
   margin: 1em;
   text-align: center;
 }
-/* .set-img {
-  max-height:  50%;
-} */
 .set-left {
   text-align: left;
+}
+.set-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
 }
 .set-overflow {
   overflow: auto;
@@ -36,27 +39,4 @@ h3 {
 }
 ::ng-deep .carousel-1 .carousel-control-next {
   display:none;
-}
-::ng-deep .carousel-2 .carousel-indicators {
-  display:none;
-}
-::ng-deep .carousel-2 .carousel-control-prev {
-  width: 5%;
-}
-::ng-deep .carousel-2 .carousel-control-prev-icon {
-  background-color: #00146e;
-  width: 50px;
-  height: 50px;
-  background-size: 41%;
-  border-radius: 50%;
-}
-::ng-deep .carousel-2 .carousel-control-next {
-  width: 5%;
-}
-::ng-deep .carousel-2 .carousel-control-next-icon {
-  background-color: #00146e;
-  width: 50px;
-  height: 50px;
-  background-size: 41%;
-  border-radius: 50%;
 }

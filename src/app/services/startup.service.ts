@@ -6,6 +6,7 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class StartupService {
+  fiveMin = 1000 * 60 * 5;
 
   constructor(
     private injector: Injector,
@@ -20,7 +21,7 @@ export class StartupService {
           if (res) {
             setInterval(() => {
               this.checkStatus();
-            }, 1000 * 60 * 5);    // check current status every 5 min
+            }, this.fiveMin);    // check current status every 5 min
           }
           resolve(res);
         }, err => {

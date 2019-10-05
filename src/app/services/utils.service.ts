@@ -13,9 +13,9 @@ export class UtilsService {
   isTokenExpired(token: string = TOKEN): boolean {
     const jwtStr = this.getToken(token);
     if (jwtStr) {
-        return this.jwtHelper.isTokenExpired(jwtStr);  // token expired?
+      return this.jwtHelper.isTokenExpired(jwtStr);  // token expired?
     } else {
-        return true;        // no token
+      return true;        // no token
     }
   }
 
@@ -29,7 +29,7 @@ export class UtilsService {
 
   removeToken(token: string = TOKEN) {
     if (this.getToken(token)) {
-        localStorage.removeItem(token);
+      localStorage.removeItem(token);
     }
   }
 }

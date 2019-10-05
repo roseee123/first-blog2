@@ -18,23 +18,16 @@
 
 <mat-grid-list cols="12" class="deep-blue">
   <mat-grid-tile colspan="6" rowspan="3">
-
-      <carousel class="carousel-1 div-width">
-        <slide *ngFor="let article of articles.slice(0, 5)">
-          <mat-card class="mat-card" routerLink="/detail/{{article.id}}">
-            <mat-card-content class="mat-card-content">
-              <img class="set-img" src="{{article.imgUrl}}">
-              <div class="carousel-caption">{{article.title}}</div>
-            </mat-card-content>
-          </mat-card>
-        </slide>
-      </carousel>
-
-
+    <carousel class="carousel-1 div-width">
+      <slide *ngFor="let sliceArticle of sliceArticles">
+        <img class="set-img" src="{{sliceArticle.imgUrl}}" routerLink="/detail/{{sliceArticle.id}}" alt="img for carousel 1">
+        <div class="carousel-caption">{{sliceArticle.title}}</div>
+      </slide>
+    </carousel>
   </mat-grid-tile>
   <mat-grid-tile colspan="6" rowspan="3">
     <div class="div-width set-overflow">
-      <mat-list class="list" *ngFor="let article of sortArticles.slice(randomNum, randomNum+4)">
+      <mat-list class="list" *ngFor="let article of sortArticles">
         <mat-list-item>
           <a routerLink="/detail/{{article.id}}">
             <span class="badge">{{article.title}}</span>
@@ -49,37 +42,33 @@
 
 <mat-grid-list cols="12">
   <mat-grid-tile colspan="12" rowspan="2">
-      <mat-card *ngFor="let article of articles.slice(randomNum, randomNum+4)" class="mat-card"
-        routerLink="/detail/{{article.id}}">
-        <mat-card-header>
-          {{article.title}}
-          <img mat-card-avatar src="{{article.imgUrl}}">
-        </mat-card-header>
-        <mat-card-content class="set-left">{{article.contents.slice(0,80)+ '...'}}</mat-card-content>
-        <mat-card-footer class="set-left">{{article.createAt | date}}</mat-card-footer>
-      </mat-card>
+    <mat-card *ngFor="let article of sliceArticles" class="mat-card" routerLink="/detail/{{article.id}}">
+      <mat-card-header>
+        {{article.title}}
+        <img mat-card-avatar src="{{article.imgUrl}}" alt="img for mat-card">
+      </mat-card-header>
+      <mat-card-content class="set-left">{{article.contents.slice(0,80)+ '...'}}</mat-card-content>
+      <mat-card-footer class="set-left">{{article.createAt | date}}</mat-card-footer>
+    </mat-card>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="12" rowspan="3">
-      <carousel class="carousel-2" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset">
-        <slide *ngFor="let article of articles">
-          <mat-card class="mat-card" routerLink="/detail/{{article.id}}">
-            <mat-card-content>
-              <img class="set-img" src="{{article.imgUrl}}">
-              <div class="carousel-caption">{{article.title}}</div>
-            </mat-card-content>
-          </mat-card>
-        </slide>
-      </carousel>
+    <carousel class="carousel-2" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+      [showIndicators]="hideIndicator" [startFromIndex]="0">
+      <slide *ngFor="let article of articles; let index=index">
+        <img src="{{article.imgUrl}}" routerLink="/detail/{{article.id}}" alt="img for carousel 2">
+        <div class="carousel-caption">{{article.title}}</div>
+      </slide>
+    </carousel>
   </mat-grid-tile>
 
   <mat-grid-tile colspan="6" rowspan="2">
     <div class="div-width set-overflow">
-      <mat-list class="list" *ngFor="let article2 of articles.slice(randomNum, randomNum+5)">
+      <mat-list class="list" *ngFor="let article of articles">
         <mat-list-item>
-          <a routerLink="/detail/{{article2.id}}">
-            <img src="{{article2.imgUrl}}" width="5%" height="5%">
-            <span class="badge">{{article2.id}}-></span>{{article2.title}}
+          <a routerLink="/detail/{{article.id}}">
+            <img src="{{article.imgUrl}}" width="5%" height="5%" alt="img for mar-list">
+            <span class="badge">{{article.id}}-></span>{{article.title}}
           </a>
         </mat-list-item>
       </mat-list>
@@ -87,7 +76,8 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="6" rowspan="2">
     <div class="div-width">
-      <img src="../../assets/img/ad.jpg" width="100%" height="100%">
+      <img src="../../assets/img/ad.jpg" width="100%" height="100%" alt="img for ad">
     </div>
   </mat-grid-tile>
+
 </mat-grid-list>

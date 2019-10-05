@@ -1,18 +1,3 @@
-<!-- <h2>My Articles</h2> -->
-<!-- <div>
-  <label>Article title:
-    <input #articleTitle />
-  </label>
-  <br>
-  <label>Article contents:
-    <input #articleContents />
-  </label>
-  <br>
-  <button (click)="add(articleTitle.value, articleContents.value);articleTitle.value=''; articleContents.value=''">
-    add
-  </button>
-</div> -->
-
 <!-- <ul class="articles">
   <li *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize, totalItems: totalData }">
     <a routerLink="/detail/{{article.id}}">
@@ -23,7 +8,6 @@
     </button>
   </li>
 </ul>
-
 <pagination-controls (pageChange)="p=$event"></pagination-controls> -->
 
 <mat-list class="articles" *ngFor="let article of articles | paginate: { itemsPerPage: count, currentPage: p, maxSize: maxSize, totalItems: totalData }">
