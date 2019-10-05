@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, isDevMode } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
 import { UserService } from '../services/user.service';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -34,7 +34,9 @@ export class ArticleDetailComponent implements OnInit {
       // .subscribe( article => this.article = article);
       .subscribe((response: any) => {
         this.article = response;
-        console.log(this.article);
+        if (environment.production) {
+          console.log(this.article);
+        }
       });
   }
 
@@ -48,8 +50,10 @@ export class ArticleDetailComponent implements OnInit {
     paper1.id = id;
     paper1.title = title;
     paper1.contents = contents;
-    console.log('title: ' + paper1.title);
-    console.log('contents: ' + paper1.contents);
+    if (environment.production) {
+      console.log('title: ' + paper1.title);
+      console.log('contents: ' + paper1.contents);
+    }
     if (!id || !title || !contents) { return; }
     this.articleService.updateArticle(id, paper1)
       .subscribe(

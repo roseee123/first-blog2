@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../article';
 import { ArticleService } from '../services/article.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -34,15 +35,17 @@ export class ArticlesComponent implements OnInit {
 
   getArticles(): void {
     this.articleService.getArticles()
-    .subscribe(articles => {
-      this.articles = articles;
-    });
+      .subscribe(articles => {
+        this.articles = articles;
+      });
   }
 
   delete(article: Article): void {
     this.articles = this.articles.filter(h => h !== article);
     this.articleService.deleteArticle(article).subscribe();
-    console.log(article.id);
+    if (environment.production) {
+      console.log(article.id);
+    }
     this.router.navigate(['/articles']);
   }
 
