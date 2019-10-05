@@ -28,23 +28,21 @@ export class DashboardComponent implements OnInit {
 
   getArticles(): void {
     this.articleService.getArticlesTotal()
-    .subscribe(articles => {
-      this.articles = articles;
-      // this.sortArticles = articles.sort((a, b) => {
-      //   const dateA = +new Date(a.createAt);
-      //   const dateB = +new Date(b.createAt);
-      //   return dateA - dateB; });
-      this.randomNum = Math.floor(Math.random() * articles.length) - 5;
-    });
+      .subscribe(articles => {
+        this.articles = articles;
+        this.randomNum = Math.floor(Math.random() * articles.length) - 5;
+      });
   }
+
   getArticlesSort(): void {
     this.articleService.getArticlesTotal()
-    .subscribe(sortArticles => {
-      this.sortArticles = sortArticles.sort((a, b) => {
-        const dateA = +new Date(a.createAt);
-        const dateB = +new Date(b.createAt);
-        return dateA - dateB; });
-    });
+      .subscribe(sortArticles => {
+        this.sortArticles = sortArticles.sort((a, b) => {
+          const dateA = +new Date(a.createAt);
+          const dateB = +new Date(b.createAt);
+          return dateA - dateB;
+        });
+      });
   }
 
   randomCount(): void {

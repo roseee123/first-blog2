@@ -6,6 +6,7 @@
   <a *ngIf="login$ | async" (click)="logout()">logout </a>
 </nav> -->
 <mat-toolbar [style.background] = "(login$ | async) ? '#afd8e3' : '#b8e6e1'">
+  <span *ngIf="login$ | async">歡迎-{{user$ | async}}</span>
   <a mat-button routerLink='/dashboard'>Dashboard </a>
   <a mat-button routerLink='/articles'>Articles </a>
   <a mat-button *ngIf="login$ | async" routerLink='/edit'>New</a>
