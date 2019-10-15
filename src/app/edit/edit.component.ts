@@ -15,8 +15,7 @@ export class EditComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   add(title: string, contents: string): void {
     const paper1 = new Article();

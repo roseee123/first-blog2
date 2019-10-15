@@ -27,28 +27,27 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getArticles();
-    this.getArticlesSort();
     this.randomCount();
   }
 
   getArticles(): void {
     this.articleService.getArticlesTotal()
       .subscribe(articles => {
-        const randomNum = Math.floor(Math.random() * articles.length) - 5;
+        const randomNum = Math.floor(Math.random() * (articles.length - 5));
         this.articles = articles;
         this.sliceArticles = articles.slice(randomNum, randomNum + 5);
-      });
-  }
-
-  getArticlesSort(): void {
-    this.articleService.getArticlesTotal()
-      .subscribe(sortArticles => {
-        const randomNum = Math.floor(Math.random() * sortArticles.length) - 5;
-        this.sortArticles = sortArticles.sort((a, b) => {
+        this.sortArticles = JSON.parse(JSON.stringify(this.sliceArticles));
+        // this.sortArticles = this.sliceArticles.sort((a, b) => {
+        this.sortArticles.sort((a, b) => {
           const dateA = +new Date(a.createAt);
           const dateB = +new Date(b.createAt);
           return dateA - dateB;
-        }).slice(randomNum, randomNum + 4);
+        });
+        console.log(randomNum);
+        console.log(typeof(this.articles));
+        console.log(this.articles);
+        console.log(this.sliceArticles);
+        console.log(this.sortArticles);
       });
   }
 
