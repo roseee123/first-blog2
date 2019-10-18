@@ -34,7 +34,7 @@ export class ArticlesComponent implements OnInit {
   // }
 
   getArticles(): void {
-    this.articleService.getArticles()
+    this.articleService.getArticlesTotal()
       .subscribe(articles => {
         this.articles = articles;
       });

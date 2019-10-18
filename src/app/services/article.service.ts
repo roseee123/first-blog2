@@ -31,15 +31,15 @@ export class ArticleService {
       );
   }
 
-  getArticles(): Observable<Article[]> {
-    // this.messageService.add(`articleService: fetch articles`);
-    // return of(ARTICLES);
-    return this.http.get<Article[]>(this.articleUrl)
-      .pipe(
-        tap(_ => this.log('fetched articles')),
-        catchError(this.handleError<Article[]>('getArticles', []))
-      );
-  }
+  // getArticles(): Observable<Article[]> {
+  //   // this.messageService.add(`articleService: fetch articles`);
+  //   // return of(ARTICLES);
+  //   return this.http.get<Article[]>(this.articleUrl)
+  //     .pipe(
+  //       tap(_ => this.log('fetched articles')),
+  //       catchError(this.handleError<Article[]>('getArticles', []))
+  //     );
+  // }
 
   getArticle(id: number): Observable<Article> {
     // this.messageService.add(`ArticleService: fetched article id=${id}`);

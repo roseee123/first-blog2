@@ -18,12 +18,24 @@
 
 <mat-grid-list cols="12" class="deep-blue">
   <mat-grid-tile colspan="6" rowspan="3">
-    <carousel class="carousel-1 div-width">
+    <div class="div-width">
+        <div class="swiper-container" id="swiper1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" *ngFor="let sliceArticle of sliceArticles">
+                <img class="set-img" src="{{sliceArticle.imgUrl}}" routerLink="/detail/{{sliceArticle.id}}"
+                  alt="img for carousel 1">
+                <div class="carousel-caption">{{sliceArticle.title}}</div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+    </div>
+    <!-- <carousel class="carousel-1 div-width">
       <slide *ngFor="let sliceArticle of sliceArticles">
         <img class="set-img" src="{{sliceArticle.imgUrl}}" routerLink="/detail/{{sliceArticle.id}}" alt="img for carousel 1">
         <div class="carousel-caption">{{sliceArticle.title}}</div>
       </slide>
-    </carousel>
+    </carousel> -->
   </mat-grid-tile>
   <mat-grid-tile colspan="6" rowspan="3">
     <div class="div-width set-overflow">
@@ -53,13 +65,23 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan="12" rowspan="3">
-    <carousel class="carousel-2" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
+    <div class="swiper-container" id="swiper2">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let article of articles">
+          <img src="{{article.imgUrl}}" routerLink="/detail/{{article.id}}" alt="img for carousel 2">
+          <div class="carousel-caption">{{article.title}}</div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <!-- <carousel class="carousel-2" [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset"
       [showIndicators]="hideIndicator" [startFromIndex]="0">
       <slide *ngFor="let article of articles; let index=index">
         <img src="{{article.imgUrl}}" routerLink="/detail/{{article.id}}" alt="img for carousel 2">
         <div class="carousel-caption">{{article.title}}</div>
       </slide>
-    </carousel>
+    </carousel> -->
   </mat-grid-tile>
 
   <mat-grid-tile colspan="6" rowspan="2">
