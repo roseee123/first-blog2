@@ -26,7 +26,7 @@
     "ngx-bootstrap": "^5.1.2",
     "ngx-pagination": "^4.1.0",
     "rxjs": "~6.4.0",
-    "swiper": "^5.1.0",
+    "swiper": "^6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
